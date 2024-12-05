@@ -104,10 +104,10 @@
     <td><a href="#Introduction">Introduction</a></td>
   </tr>
   <tr>
-    <td><a href="#how areodynamics affects planes through lift and drag ">how areodynamics affects planes through lift and drag</a></td>
+    <td><a href="#how lift and weight affect areodynamics ">how lift and weight affect areodynamics</a></td>
   </tr>
   <tr>
-    <td><a href="#how areodynamics are affected by weight and thrust ">how areodynamics are affected by weight and thrust</a></td>
+    <td><a href="#thrust and weight in more detail ">thrust and weight in more detail</a></td>
     <tr>
     <td><a href="#Conclusion">Conclusion</a></td>
   </tr>
@@ -330,54 +330,41 @@ The first key topics I want to address are the four fundamental forces acting on
     window.onload = getLastUpdatedTime;
 </script>
 
+<!-- Placeholder for total word count -->
+<p id="totalWordCount"></p>
+<hr>
+<script>
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId, outputId) {
+    // Get the text content from the specified section
+    const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
+    const wordArray = text.trim().split(/\s+/);
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  // Function to calculate and display total word count from selected sections
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const AnalysisCount = displayWordCount("Analysis_InText");
+    // Calculate the sum of all selected sections
+    const totalWordCount = IntroductionCount + AnalysisCount;
+    // Display the total word count
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+  }
+  // Run the function for specific sections and display total count when the page loads
+  window.onload = displayTotalWordCount;
+</script>
+
 </html>
 
 <video src="git hub pres (1) (2).mp4" width="800" height="450" controls>
 </video>
 
-<!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
 
-<script>
-  // Function to calculate word count for a specified section
-  function calculateWordCount(sectionId) {
-    const section = document.getElementById(sectionId); // Get the section by ID
-    if (!section) return 0; // Return 0 if the section is not found
-    const text = section.textContent || section.innerText || ""; // Get text content
-    const wordArray = text.trim().split(/\s+/); // Split into words
-    return wordArray.filter(word => word.length > 0).length; // Count non-empty words
-  }
-
-  // Function to calculate and display the total word count
-  function displayTotalWordCount() {
-    const sectionsToCount = [
-      "Abstract",            // Replace with the ID of your Abstract section
-      "Introduction",        // Replace with the ID of your Introduction section
-      "The_intro_of_areodynamics", // Replace with the ID of other sections
-      "thrust_and_weight_in_more_detail",
-      "Conclusion"
-    ]; // Add other relevant section IDs here
-
-    let totalWordCount = 0;
-
-    // Loop through the sections and calculate total word count
-    sectionsToCount.forEach(sectionId => {
-      totalWordCount += calculateWordCount(sectionId);
-    });
-
-    // Display the total word count
-    const wordCountElement = document.getElementById("totalWordCount");
-    if (wordCountElement) {
-      wordCountElement.innerText = `Total word count: ${totalWordCount}`;
-    }
-  }
-
-  // Run the word count function when the page loads
-  window.onload = function () {
-    displayTotalWordCount();
-  };
-</script>
 
  
 
